@@ -20,6 +20,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+          BASEURL: https://dev-drivebc.apps.gold.devops.gov.bc.ca/
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
