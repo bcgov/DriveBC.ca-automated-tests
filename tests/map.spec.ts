@@ -1,0 +1,36 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://test-drivebc.apps.gold.devops.gov.bc.ca/');
+  await expect(page.getByPlaceholder('Search starting location')).toBeVisible();
+  await expect(page.getByPlaceholder('Search destination location')).toBeVisible();
+  await expect(page.getByLabel('open advisories list')).toBeVisible();
+  await expect(page.getByLabel('my location')).toBeVisible();
+  await expect(page.getByLabel('zoom in')).toBeVisible();
+  await expect(page.getByLabel('zoom out')).toBeVisible();
+  await expect(page.getByLabel('open filters options')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Layer filters' })).toBeVisible();
+  await expect(page.getByLabel('close filters options')).toBeVisible();
+  await expect(page.locator('p').filter({ hasText: 'Delays' })).toBeVisible();
+  await expect(page.getByText('Closures')).toBeVisible();
+  await expect(page.getByLabel('closures tooltip')).toBeVisible();
+  await expect(page.getByText('Major')).toBeVisible();
+  await expect(page.getByLabel('major events tooltip')).toBeVisible();
+  await expect(page.getByText('Minor')).toBeVisible();
+  await expect(page.getByLabel('minor events tooltip')).toBeVisible();
+  await expect(page.getByText('Future events')).toBeVisible();
+  await expect(page.getByText('Conditions and features')).toBeVisible();
+  await expect(page.getByText('Highway cameras')).toBeVisible();
+  await expect(page.getByLabel('highway cameras tooltip')).toBeVisible();
+  await expect(page.getByText('Road conditions')).toBeVisible();
+  await expect(page.getByLabel('road conditions tooltip')).toBeVisible();
+  await expect(page.getByText('Inland Ferries')).toBeVisible();
+  await expect(page.getByLabel('inland ferries tooltip')).toBeVisible();
+  await expect(page.getByText('Weather')).toBeVisible();
+  await expect(page.getByLabel('weather tooltip')).toBeVisible();
+  await expect(page.getByText('Rest stops', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('rest stops tooltip')).toBeVisible();
+  await expect(page.getByText('Commercial vehicles')).toBeVisible();
+  await expect(page.getByText('Commercial vehicle rest stops')).toBeVisible();
+  await expect(page.getByLabel('commercial vehicle rest stops', { exact: true })).toBeVisible();
+});
