@@ -23,6 +23,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Set BASEURL
+      id: set_url
+      run: |
+        ENVIRONMENT="${{ github.event.inputs.environment || 'dev' }}"
+        if [[ "$ENVIRONMENT" == "dev" ]]; then
+          echo "BASEURL=https://dev-drivebc.apps.gold.devops.gov.bc.ca" >> $GITHUB_ENV
+        elif [[ "$ENVIRONMENT" == "test" ]]; then
+          echo "BASEURL=https://test-drivebc.apps.gold.devops.gov.bc.ca" >> $GITHUB_ENV
+        elif [[ "$ENVIRONMENT" == "uat" ]]; then
+          echo "BASEURL=https://uat-drivebc.apps.gold.devops.gov.bc.ca" >> $GITHUB_ENV
+        elif [[ "$ENVIRONMENT" == "beta" ]]; then
+          echo "BASEURL=https://beta.drivebc.ca" >> $GITHUB_ENV
+        fi
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
@@ -30,25 +43,10 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Set BASEURL
-      id: set_url
-      env:
-        ENVIRONMENT: ${{ github.event.inputs.environment || 'dev' }}
-      run: |
-        echo $GITHUB_ENV
-        if [[ "${{ env.ENVIRONMENT }}" == "dev" ]]; then
-          echo "::set-output name=baseurl::https://dev-drivebc.apps.gold.devops.gov.bc.ca"
-        elif [[ "${{ env.ENVIRONMENT }}" == "test" ]]; then
-          echo "::set-output name=baseurl::https://test-drivebc.apps.gold.devops.gov.bc.ca"
-        elif [[ "${{ env.ENVIRONMENT }}" == "uat" ]]; then
-          echo "::set-output name=baseurl::https://uat-drivebc.apps.gold.devops.gov.bc.ca"
-        elif [[ "${{ env.ENVIRONMENT }}" == "beta" ]]; then
-          echo "::set-output name=baseurl::https://beta.drivebc.ca"
-        fi
     - name: Run Playwright tests
       run: npx playwright test
       env:
-        BASEURL: ${{ steps.set_url.outputs.baseurl }}
+        BASEURL: ${{ env.BASEURL }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
