@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://test-drivebc.apps.gold.devops.gov.bc.ca/advisories');
+  await page.goto('/advisories');
   await expect(page.getByText('The B.C. Public Service')).toBeVisible();
   await expect(page.locator('#root')).toContainText('The B.C. Public Service acknowledges the territories of First Nations around B.C. and is grateful to carry out our work on these lands. We acknowledge the rights, interests, priorities, and concerns of all Indigenous Peoples - First Nations, Métis, and Inuit - respecting and acknowledging their distinct cultures, histories, rights, laws, and governments.');
   await expect(page.getByRole('img', { name: 'Government of B.C.' })).toBeVisible();

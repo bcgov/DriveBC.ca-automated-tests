@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto(`${process.env.BASEURL}/advisories`);
+  await page.goto(`/advisories`);
   await expect(page.locator('h1')).toContainText('Advisories');
   await expect(page.locator('#root')).toContainText('Get the latest critical info impacting travel on a highway or region.');
   await expect(page.locator('#root')).toContainText('REMINDER: This is a beta version of DriveBC.');

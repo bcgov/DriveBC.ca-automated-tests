@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://test-drivebc.apps.gold.devops.gov.bc.ca/road-electrical-problem');
+  await page.goto('/road-electrical-problem');
   await expect(page.locator('#root')).toContainText('Back');
   await expect(page.locator('h1')).toContainText('Road electrical problem');
   await expect(page.locator('#root')).toContainText('Report an electrical issue on a highway or bridge. Examples include: overhead signs, street lights, pedestrian lighting, signals out, or signals damaged.');

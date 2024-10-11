@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://test-drivebc.apps.gold.devops.gov.bc.ca/cameras');
+  await page.goto('/cameras');
   await expect(page.locator('h1')).toContainText('Cameras');
   await expect(page.getByPlaceholder('Search starting location')).toBeVisible();
   await expect(page.getByPlaceholder('Search destination location')).toBeVisible();

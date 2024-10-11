@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://test-drivebc.apps.gold.devops.gov.bc.ca/problems');
+  await page.goto('/problems');
   await expect(page.locator('h1')).toContainText('Report a problem');
 
   // "Website problem or suggestion" card verifications:

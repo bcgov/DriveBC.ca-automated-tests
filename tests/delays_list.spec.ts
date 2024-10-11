@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://test-drivebc.apps.gold.devops.gov.bc.ca/delays');
+  await page.goto('/delays');
   await expect(page.locator('h1')).toContainText('Delays');
   await expect(page.locator('#root')).toContainText('Find out if there are any delays that might impact your journey before you go.');
   await expect(page.getByPlaceholder('Search starting location')).toBeVisible();
