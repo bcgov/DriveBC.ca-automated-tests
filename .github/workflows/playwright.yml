@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        repository: bcgov/DriveBC.ca-automated-tests
     - name: Set BASEURL
       id: set_url
       run: |
