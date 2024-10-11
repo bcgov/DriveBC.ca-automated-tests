@@ -35,7 +35,7 @@ jobs:
     - name: Set BASEURL
       id: set_url
       run: |
-        ENVIRONMENT="${{ github.event.inputs.environment || 'dev' }}"
+        ENVIRONMENT="${{ inputs.environment || 'dev' }}"
         if [[ "$ENVIRONMENT" == "dev" ]]; then
           echo "BASEURL=https://dev-drivebc.apps.gold.devops.gov.bc.ca" >> $GITHUB_ENV
         elif [[ "$ENVIRONMENT" == "test" ]]; then
