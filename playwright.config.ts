@@ -27,7 +27,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    //baseURL: baseUrl,
+    //baseURL: process.env.BASEURL,
     baseURL: process.env.BASEURL && process.env.BASEURL.trim() !== '' ? process.env.BASEURL : 'https://test-drivebc.apps.gold.devops.gov.bc.ca',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
