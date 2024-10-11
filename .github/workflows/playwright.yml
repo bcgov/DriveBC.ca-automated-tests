@@ -16,9 +16,16 @@ on:
           - test
           - uat
           - beta
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        default: dev
 
 jobs:
   test:
+    name: Run Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
