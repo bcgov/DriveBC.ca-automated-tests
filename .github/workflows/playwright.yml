@@ -5,6 +5,18 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select the environment"
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - test
+          - uat
+          - beta
+
 jobs:
   test:
     timeout-minutes: 60
@@ -18,10 +30,25 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Set BASEURL
+      id: set_url
+      env:
+        ENVIRONMENT: ${{ github.event.inputs.environment || 'dev' }}
+      run: |
+        echo $GITHUB_ENV
+        if [[ "${{ env.ENVIRONMENT }}" == "dev" ]]; then
+          echo "::set-output name=baseurl::https://dev-drivebc.apps.gold.devops.gov.bc.ca"
+        elif [[ "${{ env.ENVIRONMENT }}" == "test" ]]; then
+          echo "::set-output name=baseurl::https://test-drivebc.apps.gold.devops.gov.bc.ca"
+        elif [[ "${{ env.ENVIRONMENT }}" == "uat" ]]; then
+          echo "::set-output name=baseurl::https://uat-drivebc.apps.gold.devops.gov.bc.ca"
+        elif [[ "${{ env.ENVIRONMENT }}" == "beta" ]]; then
+          echo "::set-output name=baseurl::https://beta.drivebc.ca"
+        fi
     - name: Run Playwright tests
       run: npx playwright test
       env:
-          BASEURL: https://dev-drivebc.apps.gold.devops.gov.bc.ca
+        BASEURL: ${{ steps.set_url.outputs.baseurl }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
