@@ -15,4 +15,4 @@ This repository is for developing and executing front end testing scripts agains
 [Playwright](https://playwright.dev/docs/intro)
 
 ## <a name="usage"></a>Usage
-npx playwright test tests/ https://test-drivebc.apps.gold.devops.gov.bc.ca/
+npx playwright test tests/
