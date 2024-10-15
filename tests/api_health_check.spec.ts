@@ -15,8 +15,16 @@ test('session API health check', async ({ request }, testInfo) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
+
+  // User isn't logged in, so the value should be null
+  const jsonData = await response.json();
+  expect(jsonData.username).toBeNull();
 });
 
+// https://test-drivebc.apps.gold.devops.gov.bc.ca/api/cms/advisories/
 test('advisories API health check', async ({ request }) => {
   const response = await request.get(`/api/cms/advisories/?`, {
     headers: {
@@ -32,10 +40,13 @@ test('advisories API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('bulletins API health check', async ({ request }) => {
-  const response = await request.get(`/api/cms/bulletins/?`, {
+  const response = await request.get(`/api/cms/bulletins/`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
@@ -49,10 +60,13 @@ test('bulletins API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('webcams API health check', async ({ request }) => {
-  const response = await request.get(`/api/webcams/?`, {
+  const response = await request.get(`/api/webcams/`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
@@ -66,10 +80,13 @@ test('webcams API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('events API health check', async ({ request }) => {
-  const response = await request.get(`/api/events/?`, {
+  const response = await request.get(`/api/events/`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
@@ -83,10 +100,13 @@ test('events API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('CMS ferries API health check', async ({ request }) => {
-  const response = await request.get(`/api/cms/ferries/?`, {
+  const response = await request.get(`/api/cms/ferries/`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
@@ -100,10 +120,13 @@ test('CMS ferries API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('current weather API health check', async ({ request }) => {
-  const response = await request.get(`/api/weather/current?`, {
+  const response = await request.get(`/api/weather/current`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
@@ -117,10 +140,13 @@ test('current weather API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('regional weather API health check', async ({ request }) => {
-  const response = await request.get(`/api/weather/regional?`, {
+  const response = await request.get(`/api/weather/regional`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
@@ -134,6 +160,9 @@ test('regional weather API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
 
 test('rest stop API health check', async ({ request }) => {
@@ -143,4 +172,7 @@ test('rest stop API health check', async ({ request }) => {
     }
   });
   await expect(response).toBeOK();
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/json");
+  expect(response.body()).not.toBeNull();
 });
