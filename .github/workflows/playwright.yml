@@ -26,6 +26,7 @@ on:
 jobs:
   test:
     name: Run Tests
+    environment: ${{ inputs.environment || 'dev' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
