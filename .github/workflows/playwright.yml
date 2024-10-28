@@ -15,7 +15,7 @@ on:
           - dev
           - test
           - uat
-          - beta
+          - prod
   workflow_call:
     inputs:
       environment:
@@ -42,7 +42,7 @@ jobs:
           echo "BASEURL=https://test-drivebc.apps.gold.devops.gov.bc.ca" >> $GITHUB_ENV
         elif [[ "$ENVIRONMENT" == "uat" ]]; then
           echo "BASEURL=https://uat-drivebc.apps.gold.devops.gov.bc.ca" >> $GITHUB_ENV
-        elif [[ "$ENVIRONMENT" == "beta" ]]; then
+        elif [[ "$ENVIRONMENT" == "prod" ]]; then
           echo "BASEURL=https://beta.drivebc.ca" >> $GITHUB_ENV
         fi
     - uses: actions/setup-node@v4
@@ -56,6 +56,10 @@ jobs:
       run: npx playwright test
       env:
         BASEURL: ${{ env.BASEURL }}
+        BCEID_USER: ${{secrets.BCEID_USER}}
+        BCEID_PASSWORD: ${{secrets.BCEID_PASSWORD}}
+        BCEID_EMAIL: ${{secrets.BCEID_EMAIL}}
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
