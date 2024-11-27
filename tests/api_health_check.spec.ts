@@ -106,7 +106,7 @@ test('events API health check', async ({ request }) => {
 });
 
 test('CMS ferries API health check', async ({ request }) => {
-  const response = await request.get(`/api/cms/ferries/`, {
+  const response = await request.get(`/api/ferries/`, {
     headers: {
       'cacheBypass': 'true',
       'Accept': '*/*',
