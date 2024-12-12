@@ -28,9 +28,8 @@ test('test', async ({ page }) => {
   await expect(page.getByLabel('inland ferries tooltip')).toBeVisible();
   await expect(page.getByText('Weather')).toBeVisible();
   await expect(page.getByLabel('weather tooltip')).toBeVisible();
-  await expect(page.getByText('Rest stops', { exact: true })).toBeVisible();
+  await expect(page.getByText('Rest stops', { exact: true }).first()).toBeVisible();
   await expect(page.getByLabel('rest stops tooltip')).toBeVisible();
   await expect(page.getByText('Commercial vehicles')).toBeVisible();
-  await expect(page.getByText('Commercial vehicle rest stops')).toBeVisible();
-  await expect(page.getByLabel('commercial vehicle rest stops', { exact: true })).toBeVisible();
+  await expect(page.getByText('Rest stops', { exact: true }).nth(1)).toBeVisible();
 });

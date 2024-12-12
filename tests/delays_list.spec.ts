@@ -19,7 +19,7 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'List filters' })).toBeVisible();
   await expect(page.getByLabel('close filters options')).toBeVisible();
   await expect(page.locator('p').filter({ hasText: /^Delays$/ })).toBeVisible();
-  await expect(page.getByText('Closures')).toBeVisible();
+  await expect(page.getByText('Closures', { exact: true })).toBeVisible();
   await expect(page.getByLabel('closures tooltip')).toBeVisible();
   await expect(page.getByText('Major', { exact: true })).toBeVisible();
   await expect(page.getByLabel('major events tooltip')).toBeVisible();
@@ -36,11 +36,10 @@ test('test', async ({ page }) => {
   await expect(page.getByLabel('inland ferries tooltip')).toBeVisible();
   await expect(page.getByText('Weather')).toBeVisible();
   await expect(page.getByLabel('weather tooltip')).toBeVisible();
-  await expect(page.getByText('Rest stops', { exact: true })).toBeVisible();
+  await expect(page.getByText('Rest stops', { exact: true }).first()).toBeVisible();
   await expect(page.getByLabel('rest stops tooltip')).toBeVisible();
   await expect(page.getByText('Commercial vehicles')).toBeVisible();
-  await expect(page.getByText('Commercial vehicle rest stops')).toBeVisible();
-  await expect(page.getByLabel('commercial vehicle rest stops', { exact: true })).toBeVisible();
+  await expect(page.getByText('Rest stops', { exact: true }).nth(1)).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Advisories' })).toBeVisible();
   await expect(page.getByText('The following advisories are')).toBeVisible();
 });
