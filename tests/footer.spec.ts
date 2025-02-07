@@ -14,5 +14,5 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Disclaimer' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Privacy' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Accessibility' })).toBeVisible();
-  await expect(page.getByRole('contentinfo')).toContainText('© 2024 Government of British Columbia');
+  await expect(page.getByRole('contentinfo')).toContainText('© 2025 Government of British Columbia');
 });
