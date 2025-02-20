@@ -38,17 +38,65 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        contextOptions: {
+          screen: {
+            width: 1920,
+            height: 1080
+          }
+        },
+        deviceScaleFactor: undefined,
+        viewport: {
+          width: 1920,
+          height: 1080
+        },
+        launchOptions: {
+          args: ['--start-maximized'],
+        },
+      },
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        contextOptions: {
+          screen: {
+            width: 1920,
+            height: 1080
+          }
+        },
+        deviceScaleFactor: undefined,
+        viewport: {
+          width: 1920,
+          height: 1080
+        },
+        launchOptions: {
+          args: ['--start-maximized'],
+        },
+      },
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        contextOptions: {
+          screen: {
+            width: 1920,
+            height: 1080
+          }
+        },
+        deviceScaleFactor: undefined,
+        viewport: {
+          width: 1920,
+          height: 1080
+        },
+        launchOptions: {
+          args: ['--start-maximized'],
+        },
+      },
     },
 
     /* Test against mobile viewports. */

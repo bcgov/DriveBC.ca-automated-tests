@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
   await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
   await expect(page.getByRole('link', { name: 'Government of British Columbia' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Map' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Cameras' })).toBeVisible();
