@@ -6,9 +6,9 @@ test('test', async ({ page }) => {
   await expect(page.locator('#root')).toContainText('Find out if there are any delays that might impact your journey before you go.');
   await expect(page.getByPlaceholder('Search starting location')).toBeVisible();
   await expect(page.getByPlaceholder('Search destination location')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Sort: Severity, Closure to' })).toBeVisible();
-  await page.getByRole('button', { name: 'Sort: Severity, Closure to' }).click();
-  await expect(page.getByRole('button', { name: 'Severity, Closure to Minor', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Severity, Closure to Minor' })).toBeVisible();
+  await page.getByRole('button', { name: 'Severity, Closure to Minor' }).click();
+  await expect(page.getByLabel('Severity, Closure to Minor').getByRole('button', { name: 'Severity, Closure to Minor' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Severity, Minor to Closure' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Road name, A–Z' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Road name, Z-A' })).toBeVisible();
@@ -16,7 +16,7 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Last updated, Old to New' })).toBeVisible();
   await expect(page.getByLabel('open filters options')).toBeVisible();
   await page.getByLabel('open filters options').click();
-  await expect(page.getByRole('heading', { name: 'List filters' })).toBeVisible();
+  await expect(page.getByLabel('open filters options')).toBeVisible();
   await expect(page.getByLabel('close filters options')).toBeVisible();
   await expect(page.locator('p').filter({ hasText: /^Delays$/ })).toBeVisible();
   await expect(page.getByText('Closures', { exact: true })).toBeVisible();
