@@ -47,10 +47,12 @@ export default defineConfig({
           }
         },
         deviceScaleFactor: undefined,
-        viewport: {
-          width: 1920,
-          height: 1080
-        },
+        headless: false,
+        // viewport: {
+        //   width: 1920,
+        //   height: 1080
+        // },
+        viewport: null,
         launchOptions: {
           args: ['--start-maximized'],
         },
@@ -60,7 +62,7 @@ export default defineConfig({
     {
       name: 'firefox',
       use: {
-        ...devices['Desktop Firefox'],
+        ...devices['Desktop Chrome'],
         contextOptions: {
           screen: {
             width: 1920,
@@ -68,10 +70,8 @@ export default defineConfig({
           }
         },
         deviceScaleFactor: undefined,
-        viewport: {
-          width: 1920,
-          height: 1080
-        },
+        headless: false,
+        viewport: null,
         launchOptions: {
           args: ['--start-maximized'],
         },
@@ -81,7 +81,7 @@ export default defineConfig({
     {
       name: 'webkit',
       use: {
-        ...devices['Desktop Safari'],
+        ...devices['Desktop Chrome'],
         contextOptions: {
           screen: {
             width: 1920,
@@ -89,10 +89,8 @@ export default defineConfig({
           }
         },
         deviceScaleFactor: undefined,
-        viewport: {
-          width: 1920,
-          height: 1080
-        },
+        headless: false,
+        viewport: null,
         launchOptions: {
           args: ['--start-maximized'],
         },
