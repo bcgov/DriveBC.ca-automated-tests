@@ -6,7 +6,7 @@ test('test', async ({ page }) => {
   await expect(page.getByPlaceholder('Search starting location')).toBeVisible();
   await expect(page.getByPlaceholder('Search destination location')).toBeVisible();
   await expect(page.getByPlaceholder('Search by camera name')).toBeVisible();
-  await page.getByLabel('showFilter filters options').click();
+  await page.getByLabel('show filters options').click();
   await expect(page.getByText('No Filters selected')).toBeVisible();
   await expect(page.locator('span').filter({ hasText: /^Highway 1$/ })).toBeVisible();
   await expect(page.locator('h4')).toContainText('Advisories');
