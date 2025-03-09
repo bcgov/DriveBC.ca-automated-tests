@@ -10,7 +10,7 @@ test('test', async ({ page }) => {
   await expect(page.getByLabel('Instagram')).toBeVisible();
   await expect(page.getByLabel('Linkedin')).toBeVisible();
   await expect(page.getByText('More Info', { exact: true })).toContainText('More Info');
-  await expect(page.getByRole('link', { name: 'Report a problem' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Report a problem' }).nth(1)).toBeVisible();
   await expect(page.getByRole('link', { name: 'Disclaimer' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Privacy' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Accessibility' })).toBeVisible();
