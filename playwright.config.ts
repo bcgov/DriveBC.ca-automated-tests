@@ -47,14 +47,10 @@ export default defineConfig({
           }
         },
         deviceScaleFactor: undefined,
-        headless: false,
-        // viewport: {
-        //   width: 1920,
-        //   height: 1080
-        // },
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
+        headless: true,
+        viewport: {
+          width: 1920,
+          height: 1080
         },
       },
     },
@@ -70,10 +66,10 @@ export default defineConfig({
           }
         },
         deviceScaleFactor: undefined,
-        headless: false,
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
+        headless: true,
+        viewport: {
+          width: 1920,
+          height: 1080
         },
       },
     },
@@ -89,10 +85,10 @@ export default defineConfig({
           }
         },
         deviceScaleFactor: undefined,
-        headless: false,
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
+        headless: true,
+        viewport: {
+          width: 1920,
+          height: 1080
         },
       },
     },
